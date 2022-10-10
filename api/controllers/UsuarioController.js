@@ -9,7 +9,7 @@ const allowList = require("../redis/allowlist-refresh-token");
 const auth = require("../middleware/auth");
 function geradorDeToken(parametros = {}) {
   return jwt.sign(parametros, hash.secret, {
-    expiresIn: "15s",
+    expiresIn: 14400,
   });
 }
 
@@ -152,7 +152,7 @@ class UsuarioController {
     }
   }
   static async verificaAuthenticacao(req, res) {
-    const { token } = req.params;
+    const { token } = req.body;
 
     jwt.verify(token, hash.secret, (err, decoded) => {
       if (err) {
