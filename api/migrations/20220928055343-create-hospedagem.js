@@ -1,49 +1,55 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('hospedagens', {
+    await queryInterface.createTable("hospedagens", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       nome: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       tipo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       distanciadocentro: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
       },
       avaliacao: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+      },
+      comentarios: {
+        type: Sequelize.INTEGER,
+      },
+      dataRef: {
+        type: Sequelize.DATEONLY,
       },
       preco: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
       },
       sobre: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       imagem: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       localizacao: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('hospedagens');
-  }
+    await queryInterface.dropTable("hospedagens");
+  },
 };

@@ -6,7 +6,10 @@ class AluguelCarrosController {
     const { localDeRetirada } = req.query;
     try {
       const carros = await database.aluguelCarros.findAll({
-        where: { localDeRetirada: { [Op.startsWith]: localDeRetirada } },
+        where: {
+          localDeRetirada: { [Op.startsWith]: localDeRetirada },
+        },
+        include: "imagens",
       });
       res.status(200).json({ carros });
     } catch (erro) {
@@ -17,7 +20,10 @@ class AluguelCarrosController {
   static async pegaUmCarro(req, res) {
     const { id } = req.params;
     try {
-      const carro = await database.aluguelCarros.findOne({ where: { id: id } });
+      const carro = await database.aluguelCarros.findOne({
+        where: { id: id },
+        include: "imagens",
+      });
       res.status(200).json({ carro });
     } catch (erro) {
       res.status(500).json(erro);

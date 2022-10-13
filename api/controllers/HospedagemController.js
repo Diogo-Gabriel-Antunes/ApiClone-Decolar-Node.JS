@@ -13,7 +13,10 @@ class HospedagemController {
           },
         };
       }
-      const hospedagem = await database.hospedagens.findAll({ where });
+      const hospedagem = await database.hospedagens.findAll({
+        where,
+        include: ["imagens", "quartos"],
+      });
       res.status(200).json({ hospedagem });
     } catch (erro) {
       res.status(500).json(erro);
@@ -25,6 +28,7 @@ class HospedagemController {
     try {
       const hospedagem = await database.hospedagens.findOne({
         where: { id: id },
+        include: ["imagens", "quartos"],
       });
       res.status(200).json({ hospedagem });
     } catch (erro) {

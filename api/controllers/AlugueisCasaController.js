@@ -16,7 +16,10 @@ class AlugueisCasaController {
       };
     }
     try {
-      const AlugueisCasa = await database.AlugueisCasa.findAll({ where });
+      const AlugueisCasa = await database.AlugueisCasa.findAll({
+        where,
+        include: ["imagens", "quartos"],
+      });
       res.status(200).json({ AlugueisCasa });
     } catch (erro) {
       res.status(500).json(erro);
@@ -28,6 +31,7 @@ class AlugueisCasaController {
     try {
       const AlugueisCasa = await database.AlugueisCasa.findOne({
         where: { id: id },
+        include: ["imagens", "quartos"],
       });
       res.status(200).json({ AlugueisCasa });
     } catch (erro) {

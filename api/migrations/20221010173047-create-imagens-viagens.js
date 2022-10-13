@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("atracoes", {
+    await queryInterface.createTable("imagensViagens", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,29 +12,10 @@ module.exports = {
       imagem: {
         type: Sequelize.STRING,
       },
-      local: {
-        type: Sequelize.STRING,
-      },
-      nome: {
-        type: Sequelize.STRING,
-      },
-      avaliacao: {
-        type: Sequelize.FLOAT,
-      },
-      comentario: {
+      viagensId: {
         type: Sequelize.INTEGER,
-      },
-      duracao: {
-        type: Sequelize.STRING,
-      },
-      quantidadeDeDias: {
-        type: Sequelize.INTEGER,
-      },
-      preco: {
-        type: Sequelize.FLOAT,
-      },
-      descricao: {
-        type: Sequelize.TEXT,
+        allowNull: true,
+        references: { model: "viagens", key: "id" },
       },
       createdAt: {
         allowNull: false,
@@ -47,6 +28,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("atracoes");
+    await queryInterface.dropTable("imagensViagens");
   },
 };

@@ -2,39 +2,37 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("atracoes", {
+    await queryInterface.createTable("QuartosAlugueisCasas", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      imagem: {
-        type: Sequelize.STRING,
-      },
-      local: {
-        type: Sequelize.STRING,
-      },
       nome: {
         type: Sequelize.STRING,
       },
-      avaliacao: {
-        type: Sequelize.FLOAT,
-      },
-      comentario: {
-        type: Sequelize.INTEGER,
-      },
-      duracao: {
+      imagem: {
         type: Sequelize.STRING,
       },
-      quantidadeDeDias: {
+      hidromassagem: {
+        type: Sequelize.BOOLEAN,
+      },
+      tv: {
+        type: Sequelize.BOOLEAN,
+      },
+      wifi: {
+        type: Sequelize.BOOLEAN,
+      },
+      arCondicionado: {
+        type: Sequelize.BOOLEAN,
+      },
+      frigobar: {
+        type: Sequelize.BOOLEAN,
+      },
+      quartoAlugueisCasaId: {
         type: Sequelize.INTEGER,
-      },
-      preco: {
-        type: Sequelize.FLOAT,
-      },
-      descricao: {
-        type: Sequelize.TEXT,
+        references: { model: "hospedagens", key: "id" },
       },
       createdAt: {
         allowNull: false,
@@ -47,6 +45,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("atracoes");
+    await queryInterface.dropTable("quartosAlugueisCasa");
   },
 };

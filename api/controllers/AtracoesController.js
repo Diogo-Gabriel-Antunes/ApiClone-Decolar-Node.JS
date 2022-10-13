@@ -13,7 +13,10 @@ class AtracoesController {
       };
     }
     try {
-      const atracoes = await database.atracoes.findAll({ where });
+      const atracoes = await database.atracoes.findAll({
+        where,
+        include: "imagens",
+      });
       res.status(200).json({ atracoes });
     } catch (erro) {
       res.status(500).json(erro);
@@ -23,7 +26,10 @@ class AtracoesController {
   static async pegaUmaAtracao(req, res) {
     const { id } = req.params;
     try {
-      const atracoes = await database.atracoes.findOne({ where: { id: id } });
+      const atracoes = await database.atracoes.findOne({
+        where: { id: id },
+        include: "imagens",
+      });
       res.status(200).json({ atracoes });
     } catch (erro) {
       res.status(500).json(erro);

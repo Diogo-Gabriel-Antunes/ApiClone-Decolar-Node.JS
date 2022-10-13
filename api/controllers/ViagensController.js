@@ -32,19 +32,26 @@ class ViagensController {
           [Op.startsWith]: destino,
         },
       };
-    }
-    try {
-      const viagens = await database.viagens.findAll({ where });
-      res.status(200).json({ viagens });
-    } catch (erro) {
-      res.status(500).json(erro);
+
+      try {
+        const viagens = await database.viagens.findAll({
+          where,
+          include: "imagens",
+        });
+        res.status(200).json({ viagens });
+      } catch (erro) {
+        res.status(500).json(erro.message);
+      }
     }
   }
 
   static async pegaUmaViagem(req, res) {
     const { id } = req.params;
     try {
-      const viagem = await database.viagens.findOne({ where: { id: id } });
+      const viagem = await database.viagens.findOne({
+        where: { id: id },
+        include: "imagens",
+      });
       res.status(200).json({ viagem });
     } catch (erro) {
       res.status(500).json(erro);
