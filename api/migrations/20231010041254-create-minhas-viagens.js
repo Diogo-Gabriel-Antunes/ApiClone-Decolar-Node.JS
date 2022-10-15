@@ -19,10 +19,10 @@ module.exports = {
         allowNull: true,
         references: { model: "AlugueisCasas", key: "id" },
       },
-      atracaoId: {
+      opcaoId: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        references: { model: "atracoes", key: "id" },
+        references: { model: "OpcoesAtracoes", key: "id" },
       },
       hospedagemId: {
         type: Sequelize.INTEGER,

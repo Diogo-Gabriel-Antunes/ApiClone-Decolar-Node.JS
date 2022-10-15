@@ -72,6 +72,18 @@ class HospedagemController {
       return res.status(500).json(erro);
     }
   }
+  static async pegaUmQuarto(req, res) {
+    const { id } = req.params;
+    try {
+      const quarto = await database.quartosHospedagems.findOne({
+        where: { id: id },
+      });
+      res.status(200).json({ quarto });
+    } catch (erro) {
+      quarto;
+      res.status(500).json(erro);
+    }
+  }
 }
 
 module.exports = HospedagemController;

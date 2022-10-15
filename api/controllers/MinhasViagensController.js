@@ -66,7 +66,7 @@ class MinhasViagensController {
     const { usuarioId } = req.params;
     try {
       const atracoes = await sequelize.query(
-        `select * from atracoes inner join minhasViagens on atracaoId where usuarioId = ${usuarioId} and atracaoId = atracoes.id`
+        `select * from OpcoesAtracoes inner join minhasViagens on opcaoId where usuarioId = ${usuarioId} and opcaoId = OpcoesAtracoes.id`
       );
       const alugueisCarros = await sequelize.query(
         `select * from aluguelCarros  inner join minhasViagens on alugueisCarrosId where usuarioId = ${usuarioId} and alugueisCarrosId = aluguelCarros.id`

@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "quartoAlugueisCasaId",
         as: "quartos",
       });
+      models.AlugueisCasa.hasMany(models.minhasViagens, {
+        foreignKey: "viagensId",
+        as: "viagens",
+      });
     }
   }
   AlugueisCasa.init(

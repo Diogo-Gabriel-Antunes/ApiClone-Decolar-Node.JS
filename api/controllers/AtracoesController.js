@@ -15,7 +15,7 @@ class AtracoesController {
     try {
       const atracoes = await database.atracoes.findAll({
         where,
-        include: "imagens",
+        include: ["imagens", "opcoes"],
       });
       res.status(200).json({ atracoes });
     } catch (erro) {
@@ -28,7 +28,7 @@ class AtracoesController {
     try {
       const atracoes = await database.atracoes.findOne({
         where: { id: id },
-        include: "imagens",
+        include: ["imagens", "opcoes"],
       });
       res.status(200).json({ atracoes });
     } catch (erro) {
@@ -68,6 +68,17 @@ class AtracoesController {
         .json({ Message: `atracoes de id ${id} foi deletado com sucesso` });
     } catch (erro) {
       return res.status(500).json(erro);
+    }
+  }
+  static async pegaUmaOpcao(req, res) {
+    const { id } = req.params;
+    try {
+      const opcao = await database.OpcoesAtracoes.findOne({
+        where: { id: id },
+      });
+      res.status(200).json({ opcao });
+    } catch (erro) {
+      res.status(500).json(erro);
     }
   }
 }

@@ -12,8 +12,14 @@ module.exports = {
       nome: {
         type: Sequelize.STRING,
       },
+      AreaDoQuarto: {
+        type: Sequelize.INTEGER,
+      },
       imagem: {
         type: Sequelize.STRING,
+      },
+      preco: {
+        type: Sequelize.FLOAT,
       },
       hidromassagem: {
         type: Sequelize.BOOLEAN,

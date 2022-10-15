@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       arCondicionado: DataTypes.BOOLEAN,
       frigobar: DataTypes.BOOLEAN,
       quartosHospedagemId: DataTypes.INTEGER,
+      AreaDoQuarto: DataTypes.INTEGER,
+      preco: DataTypes.FLOAT,
     },
     {
       sequelize,

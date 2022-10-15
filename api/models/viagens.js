@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "viagensId",
         as: "imagens",
       });
+      models.viagens.hasMany(models.minhasViagens, {
+        foreignKey: "viagensId",
+        as: "viagens",
+      });
     }
   }
   viagens.init(

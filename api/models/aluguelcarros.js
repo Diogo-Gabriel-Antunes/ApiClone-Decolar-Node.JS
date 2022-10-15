@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "alugueisCarrosId",
         as: "imagens",
       });
+      models.aluguelCarros.hasMany(models.minhasViagens, {
+        foreignKey: "alugueisCarrosId",
+        as: "aluguelCarros",
+      });
     }
   }
   aluguelCarros.init(
